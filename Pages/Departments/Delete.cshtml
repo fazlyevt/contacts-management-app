@@ -1,0 +1,25 @@
+﻿@page
+@model ContactsManagementApp.Pages.Departments.DeleteModel
+
+@{
+    ViewData["Title"] = "Удалить подразделение";
+}
+
+<h1>Удалить подразделение?</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Department.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Department.Name)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Department.DepartmentId" />
+        <input type="submit" value="Удалить" class="btn btn-danger" />
+        <a class="btn btn-primary" asp-page="./Index">Назад</a>
+    </form>
+</div>

@@ -1,0 +1,65 @@
+﻿@page
+@model ContactsManagementApp.Pages.Contacts.EditModel
+
+@{
+    ViewData["Title"] = "Изменить сотрудника";
+}
+
+<h1>Изменить сотрудника</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Contact.ContactId" />
+            <div class="form-floating mb-3">
+                <input asp-for="Contact.FirstName" class="form-control" placeholder=@Html.DisplayNameFor(o => o.Contact.FirstName) />
+                <label asp-for="Contact.FirstName" class="control-label"></label>
+                <span asp-validation-for="Contact.FirstName" class="text-danger small"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Contact.MiddleName" class="form-control" placeholder=@Html.DisplayNameFor(o => o.Contact.MiddleName) />
+                <label asp-for="Contact.MiddleName" class="control-label"></label>
+                <span asp-validation-for="Contact.MiddleName" class="text-danger small"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Contact.LastName" class="form-control" placeholder=@Html.DisplayNameFor(o => o.Contact.LastName) />
+                <label asp-for="Contact.LastName" class="control-label"></label>
+                <span asp-validation-for="Contact.LastName" class="text-danger small"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Contact.Email" class="form-control" placeholder=@Html.DisplayNameFor(o => o.Contact.Email) />
+                <label asp-for="Contact.Email" class="control-label"></label>
+                <span asp-validation-for="Contact.Email" class="text-danger small"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Contact.PhoneNumber" class="form-control phone-mask" placeholder=@Html.DisplayNameFor(o => o.Contact.PhoneNumber) />
+                <label asp-for="Contact.PhoneNumber" class="control-label"></label>
+                <span asp-validation-for="Contact.PhoneNumber" class="text-danger small"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <select asp-for="Contact.ClientId" class="form-control" asp-items="ViewBag.ClientId"></select>
+                <label asp-for="Contact.ClientId" class="control-label"></label>
+                <span asp-validation-for="Contact.ClientId" class="text-danger small"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <select asp-for="Contact.Departmentid" class="form-control" asp-items="ViewBag.Departmentid"></select>
+                <label asp-for="Contact.Departmentid" class="control-label"></label>
+                <span asp-validation-for="Contact.Departmentid" class="text-danger small"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <select asp-for="Contact.PositionId" class="form-control" asp-items="ViewBag.PositionId"></select>
+                <label asp-for="Contact.PositionId" class="control-label"></label>
+                <span asp-validation-for="Contact.PositionId" class="text-danger small"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+                <a class="btn btn-primary" asp-page="Index">Назад</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

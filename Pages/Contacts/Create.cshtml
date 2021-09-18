@@ -1,0 +1,79 @@
+﻿@page
+@model ContactsManagementApp.Pages.Contacts.CreateModel
+
+@{
+    ViewData["Title"] = "Создать сотрудника";
+}
+
+<h1>Создать сотрудника</h1>
+
+<div class="row">
+    <div class="col-md-5">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="Contact.FirstName" class="form-control" placeholder=@Html.DisplayNameFor(o => o.Contact.FirstName) />
+                <label asp-for="Contact.FirstName" class="control-label"></label>
+                <span asp-validation-for="Contact.FirstName" class="text-danger small"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Contact.MiddleName" class="form-control" placeholder=@Html.DisplayNameFor(o => o.Contact.MiddleName) />
+                <label asp-for="Contact.MiddleName" class="control-label"></label>
+                <span asp-validation-for="Contact.MiddleName" class="text-danger small"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Contact.LastName" class="form-control" placeholder=@Html.DisplayNameFor(o => o.Contact.LastName) />
+                <label asp-for="Contact.LastName" class="control-label"></label>
+                <span asp-validation-for="Contact.LastName" class="text-danger small"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Contact.Email" class="form-control" placeholder=@Html.DisplayNameFor(o => o.Contact.Email) />
+                <label asp-for="Contact.Email" class="control-label"></label>
+                <span asp-validation-for="Contact.Email" class="text-danger small"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Contact.PhoneNumber" class="form-control phone-mask" placeholder=@Html.DisplayNameFor(o => o.Contact.PhoneNumber) />
+                <label asp-for="Contact.PhoneNumber" class="control-label"></label>
+                <span asp-validation-for="Contact.PhoneNumber" class="text-danger small"></span>
+            </div>
+            <div class="form-group mb-3">
+                <div class="input-group">
+                    <div class="form-floating w-75">
+                        <select asp-for="Contact.ClientId" class="form-control" asp-items="ViewBag.ClientId"></select>
+                        <label asp-for="Contact.ClientId" class="control-label"></label>
+                    </div>
+                    <a class="btn btn-lg btn-primary d-flex align-items-center w-25" asp-page="/Clients/Create">Добавить</a>
+                </div>
+                <span asp-validation-for="Contact.ClientId" class="text-danger small"></span>
+            </div>
+            <div class="form-group mb-3">
+                <div class="input-group">
+                    <div class="form-floating w-75">
+                        <select asp-for="Contact.Departmentid" class="form-control" asp-items="ViewBag.Departmentid"></select>
+                        <label asp-for="Contact.Departmentid" class="control-label"></label>
+                    </div>
+                    <a class="btn btn-lg btn-primary d-flex align-items-center w-25" asp-page="/Departments/Create">Добавить</a>
+                </div>
+                <span asp-validation-for="Contact.Departmentid" class="text-danger small"></span>
+            </div>
+            <div class="form-group mb-3">
+                <div class="input-group">
+                    <div class="form-floating w-75">
+                        <select asp-for="Contact.PositionId" class="form-control" asp-items="ViewBag.PositionId"></select>
+                        <label asp-for="Contact.PositionId" class="control-label"></label>
+                    </div>
+                    <a class="btn btn-lg btn-primary d-flex align-items-center w-25" asp-page="/Positions/Create">Добавить</a>
+                </div>
+                <span asp-validation-for="Contact.PositionId" class="text-danger small"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-lg btn-primary" />
+                <a class="btn btn-lg btn-primary" asp-page="Index">Назад</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

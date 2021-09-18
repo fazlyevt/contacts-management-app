@@ -1,0 +1,30 @@
+﻿@page
+@model ContactsManagementApp.Pages.Positions.EditModel
+
+@{
+    ViewData["Title"] = "Изменить должность";
+}
+
+<h1>Изменить должность</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Position.PositionId" />
+            <div class="form-floating mb-3">
+                <input asp-for="Position.Name" class="form-control" placeholder=@Html.DisplayNameFor(o => o.Position.Name) />
+                <label asp-for="Position.Name" class="control-label"></label>
+                <span asp-validation-for="Position.Name" class="text-danger small"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+                <a class="btn btn-primary" asp-page="Index">Назад</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

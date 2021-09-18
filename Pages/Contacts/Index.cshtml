@@ -1,0 +1,76 @@
+﻿@page
+@model ContactsManagementApp.Pages.Contacts.IndexModel
+
+@{
+    ViewData["Title"] = "Сотрудники";
+}
+
+<h1>Сотрудники</h1>
+
+<p>
+    <a class="btn btn-primary" asp-page="Create">Добавить</a>
+</p>
+<div class="form-group mb-3">
+    <input type="search" id="filter-input" class="form-control" placeholder="Поиск сотрудников" />
+</div>
+<table class="table table-bordered" id="filter-table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].Client)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].Department)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].Position)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Contact)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Client.Name)
+                </td>
+                <td>
+                    @if (item.Department != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.Department.Name)
+                    }
+                </td>
+                <td>
+                    @if (item.Position != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.Position.Name)
+                    }
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-primary" asp-page="./Details" asp-route-id="@item.ContactId">Просмотр</a>
+                    <a class="btn btn-sm btn-primary" asp-page="./Edit" asp-route-id="@item.ContactId">Изменить</a>
+                    <a class="btn btn-sm btn-danger" asp-page="./Delete" asp-route-id="@item.ContactId">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
