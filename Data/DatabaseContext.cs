@@ -13,7 +13,7 @@ namespace ContactsManagementApp.Data
             : base(options)
         {
         }
-
+        
         public DbSet<Department> Department { get; set; }
 
         public DbSet<Position> Position { get; set; }
